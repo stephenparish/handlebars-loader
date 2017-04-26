@@ -23,7 +23,10 @@ function getLoaderConfig(loaderContext) {
   var configKey = query.config || 'handlebarsLoader';
   var config = loaderContext.options[configKey] || {};
   delete query.config;
-  return assign({}, config, query);
+  return assign({
+    ignorePartials: true,
+    ignoreHelpers: true,
+  }, config, query);
 }
 
 module.exports = function(source) {
